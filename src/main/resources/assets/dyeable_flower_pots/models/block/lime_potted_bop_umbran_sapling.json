@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/lime_flower_pot_cross",
+	"textures": {
+		"plant": "biomesoplenty:block/umbran_sapling"
+	}
+}

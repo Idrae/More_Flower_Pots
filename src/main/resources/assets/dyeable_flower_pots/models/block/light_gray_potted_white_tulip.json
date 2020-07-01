@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/light_gray_flower_pot_cross",
+	"textures": {
+		"plant": "block/white_tulip"
+	}
+}

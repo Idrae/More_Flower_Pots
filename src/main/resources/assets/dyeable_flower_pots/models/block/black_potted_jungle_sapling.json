@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/black_flower_pot_cross",
+	"textures": {
+		"plant": "block/jungle_sapling"
+	}
+}

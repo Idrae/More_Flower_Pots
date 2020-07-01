@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/green_flower_pot_cross",
+	"textures": {
+		"plant": "biomesoplenty:block/redwood_sapling"
+	}
+}

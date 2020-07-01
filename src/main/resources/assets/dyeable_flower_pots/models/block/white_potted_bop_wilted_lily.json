@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/white_flower_pot_cross",
+	"textures": {
+		"plant": "biomesoplenty:block/wilted_lily"
+	}
+}
