@@ -1,11 +1,13 @@
 package com._idrae.dyeable_flower_pots.util;
 
+import com._idrae.dyeable_flower_pots.compat.BOPCompat;
 import com._idrae.dyeable_flower_pots.compat.QuarkCompat;
 import net.minecraft.block.Block;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
+// Messy file, used for practical reasons, not in actual code
 public class JSONGenerator {
 
     private static final String[] quarkVanillaPlantNames = {
@@ -87,10 +89,56 @@ public class JSONGenerator {
                 writer1.append("}");
                 writer1.flush();
                 writer1.close();
-
             }
 
              */
+            /*
+            for (Block plant : QuarkCompat.QUARK_VANILLA_PLANTS) {
+                String plantString = plant.getRegistryName().getPath();
+                FileWriter writer1 = new FileWriter(color + "_potted_quark_" + plantString +".json");
+                writer1.append("{\n");
+                writer1.append("\t\"type\": \"minecraft:block\",\n");
+                writer1.append("\t\"pools\": [\n");
+                writer1.append("\t\t{\n");
+                writer1.append("\t\t\t\"rolls\": 1,\n");
+                writer1.append("\t\t\t\"entries\": [\n");
+                writer1.append("\t\t\t\t{\n");
+                writer1.append("\t\t\t\t\t\"type\": \"minecraft:item\",\n");
+                writer1.append("\t\t\t\t\t\"name\": \"dyeable_flower_pots:" + color + "_flower_pot\"\n");
+                writer1.append("\t\t\t\t}\n");
+                writer1.append("\t\t\t],\n");
+                writer1.append("\t\t\t\"conditions\": [\n");
+                writer1.append("\t\t\t\t{\n");
+                writer1.append("\t\t\t\t\t\"condition\": \"minecraft:survives_explosion\"\n");
+                writer1.append("\t\t\t\t}\n");
+                writer1.append("\t\t\t]\n");
+                writer1.append("\t\t},\n");
+                writer1.append("\t\t{\n");
+                writer1.append("\t\t\t\"rolls\": 1,\n");
+                writer1.append("\t\t\t\"entries\": [\n");
+                writer1.append("\t\t\t\t{\n");
+                writer1.append("\t\t\t\t\t\"type\": \"minecraft:item\",\n");
+                writer1.append("\t\t\t\t\t\"name\": \"minecraft:" + plantString + "\"\n");
+                writer1.append("\t\t\t\t}\n");
+                writer1.append("\t\t\t],\n");
+                writer1.append("\t\t\t\"conditions\": [\n");
+                writer1.append("\t\t\t\t{\n");
+                writer1.append("\t\t\t\t\t\"condition\": \"minecraft:survives_explosion\"\n");
+                writer1.append("\t\t\t\t}\n");
+                writer1.append("\t\t\t]\n");
+                writer1.append("\t\t}\n");
+                writer1.append("\t]\n");
+                writer1.append("}");
+                writer1.flush();
+                writer1.close();
+            }
+
+             */
+
+
+
+
+
 
 
             /*
@@ -200,7 +248,7 @@ public class JSONGenerator {
             }
 
              */
-
+            /*
             FileWriter writer = new FileWriter(color + "_potted_quark_peony.json");
             writer.append("{\n");
             writer.append("\t\"parent\": \"dyeable_flower_pots:block/" + color +"_flower_pot_cross\",\n");
@@ -210,6 +258,8 @@ public class JSONGenerator {
             writer.append("}");
             writer.flush();
             writer.close();
+
+             */
 
 
 

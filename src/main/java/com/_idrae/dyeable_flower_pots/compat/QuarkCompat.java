@@ -34,8 +34,6 @@ public class QuarkCompat {
             Blocks.WHEAT
     };
 
-    private static final IForgeRegistry<Block> BLOCK_REGISTRY = GameRegistry.findRegistry(Block.class);
-
     public static Set<Block> QUARK_MODDED_PLANTS = new HashSet<>();
 
     public static void createRegistryEntries() {
@@ -47,7 +45,6 @@ public class QuarkCompat {
         QUARK_MODDED_PLANTS.add(ForgeRegistries.BLOCKS.getValue(new ResourceLocation("quark", "yellow_blossom_sapling")));
     }
 
-
     public static final String[] QUARK_MODDED_PLANT_STRINGS = {
             "blue_blossom_sapling",
             "glowshroom",
@@ -56,12 +53,4 @@ public class QuarkCompat {
             "pink_blossom_sapling",
             "yellow_blossom_sapling"
     };
-
-    public static void test1() {
-        // IForgeRegistry<Block> test = GameRegistry.findRegistry(Block.class);
-        // Block testBlock = test.getValue(new ResourceLocation("quark", "orange_blossom_sapling"));
-        Block testBlock = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("quark", "orange_blossom_sapling"));
-        DyeableFlowerPots.LOGGER.debug("111111111111111111111111111111111111111111111111111");
-        DyeableFlowerPots.LOGGER.debug(testBlock.getRegistryName().getPath());
-    }
 }

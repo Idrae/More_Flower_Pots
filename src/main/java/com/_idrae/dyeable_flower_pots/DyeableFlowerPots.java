@@ -80,8 +80,6 @@ public class DyeableFlowerPots
 
         final IForgeRegistry<Block> registry = event.getRegistry();
         RegistryHandler.registerModdedPottedFlowers(registry);
-        JSONGenerator.generate();
-
     }
 
     public static class DyeableFlowerPotsItemGroup extends ItemGroup {
