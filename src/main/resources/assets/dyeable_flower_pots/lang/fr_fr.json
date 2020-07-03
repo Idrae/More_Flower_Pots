@@ -1,0 +1,19 @@
+{
+  "block.dyeable_flower_pots.white_flower_pot": "Pot de fleur blanc",
+  "block.dyeable_flower_pots.orange_flower_pot": "Pot de fleur orange",
+  "block.dyeable_flower_pots.magenta_flower_pot": "Pot de fleur magenta",
+  "block.dyeable_flower_pots.light_blue_flower_pot": "Pot de fleur bleu clair",
+  "block.dyeable_flower_pots.yellow_flower_pot": "Pot de fleur jaune",
+  "block.dyeable_flower_pots.lime_flower_pot": "Pot de fleur vert clair",
+  "block.dyeable_flower_pots.pink_flower_pot": "Pot de fleur rose",
+  "block.dyeable_flower_pots.gray_flower_pot": "Pot de fleur gris",
+  "block.dyeable_flower_pots.light_gray_flower_pot": "Pot de fleur gris clair",
+  "block.dyeable_flower_pots.cyan_flower_pot": "Pot de fleur cyan",
+  "block.dyeable_flower_pots.purple_flower_pot": "Pot de fleur violet",
+  "block.dyeable_flower_pots.blue_flower_pot": "Pot de fleur bleu",
+  "block.dyeable_flower_pots.brown_flower_pot": "Pot de fleur marron",
+  "block.dyeable_flower_pots.green_flower_pot": "Pot de fleur vert",
+  "block.dyeable_flower_pots.red_flower_pot": "Pot de fleur rouge",
+  "block.dyeable_flower_pots.black_flower_pot": "Pot de fleur noir",
+  "itemGroup.dyeable_flower_pots": "Pots de fleur colorés"
+}
