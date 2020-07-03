@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/pots/purple_flower_pot_cross",
+	"textures": {
+		"plant": "biomesoplenty:block/glowflower"
+	}
+}

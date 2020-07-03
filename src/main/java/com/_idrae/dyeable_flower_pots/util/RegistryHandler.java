@@ -3,17 +3,10 @@ package com._idrae.dyeable_flower_pots.util;
 import com._idrae.dyeable_flower_pots.DyeableFlowerPots;
 import com._idrae.dyeable_flower_pots.blocks.DyedFlowerPotBlock;
 import com._idrae.dyeable_flower_pots.compat.BOPCompat;
+import com._idrae.dyeable_flower_pots.compat.QuarkCompat;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.material.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.structure.Structure;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -23,7 +16,7 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class RegistryHandler {
 
     public static final String[] COLORS = {"white", "orange", "magenta", "light_blue", "yellow", "lime", "pink", "gray", "light_gray", "cyan", "purple", "blue", "brown", "green", "red", "black"};
-    // public static final String[] PLANTS = {"oak_sapling", "spruce_sapling", "birch_sapling", "jungle_sapling", "acacia_sapling", "dark_oak_sapling", "fern", "dandelion", "poppy", "blue_orchid", "allium", "azure_bluet", "bamboo", "red_tulip", "orange_tulip", "white_tulip", "pink_tulip", "oxeye_daisy", "cornflower", "lily_of_the_valley", "wither_rose", "red_mushroom", "brown_mushroom", "dead_bush", "cactus"};
+    public static final String[] PLANT_STRINGS = {"oak_sapling", "spruce_sapling", "birch_sapling", "jungle_sapling", "acacia_sapling", "dark_oak_sapling", "fern", "dandelion", "poppy", "blue_orchid", "allium", "azure_bluet", "bamboo", "red_tulip", "orange_tulip", "white_tulip", "pink_tulip", "oxeye_daisy", "cornflower", "lily_of_the_valley", "wither_rose", "red_mushroom", "brown_mushroom", "dead_bush", "cactus"};
     public static final Block[] PLANTS = {
             Blocks.OAK_SAPLING,
             Blocks.SPRUCE_SAPLING,
@@ -52,93 +45,6 @@ public class RegistryHandler {
             Blocks.CACTUS
     };
 
-    /*
-    public static final String[] QUARK_VANILLA_PLANT_STRINGS = {
-            "beetroot",
-            "berries",
-            "carrot",
-            "chorus",
-            "cocoa_beans",
-            "grass",
-            "lilac",
-            "melon",
-            "nether_wart",
-            "peony",
-            "potato",
-            "pumpkin",
-            "rose",
-            "sea_pickle",
-            "sugar_cane",
-            "sunflower",
-            "wheat",
-    };
-
-     */
-
-    public static final String[] BOP_PLANT_STRINGS = {
-            "origin_sapling",
-            "flowering_oak_sapling",
-            "rainbow_birch_sapling",
-            "yellow_autumn_sapling",
-            "orange_autumn_sapling",
-            "maple_sapling",
-            "fir_sapling",
-            "redwood_sapling",
-            "white_cherry_sapling",
-            "pink_cherry_sapling",
-            "mahogany_sapling",
-            "jacaranda_sapling",
-            "palm_sapling",
-            "willow_sapling",
-            "dead_sapling",
-            "magic_sapling",
-            "umbran_sapling",
-            "hellbark_sapling",
-            "rose",
-            "violet",
-            "lavender",
-            "wildflower",
-            "orange_cosmos",
-            "pink_daffodil",
-            "pink_hibiscus",
-            "glowflower",
-            "wilted_lily",
-            "burning_blossom",
-            "sprout",
-            "toadstool",
-            "glowshroom"
-    };
-
-    public static final Block[] QUARK_VANILLA_PLANTS = {
-            Blocks.BEETROOTS,
-            Blocks.SWEET_BERRY_BUSH,
-            Blocks.CARROTS,
-            Blocks.CHORUS_FLOWER,
-            Blocks.COCOA,
-            Blocks.GRASS,
-            Blocks.LILAC,
-            Blocks.MELON_STEM,
-            Blocks.NETHER_WART,
-            Blocks.PEONY,
-            Blocks.POTATOES,
-            Blocks.PUMPKIN_STEM,
-            Blocks.ROSE_BUSH,
-            Blocks.SEA_PICKLE,
-            Blocks.SUGAR_CANE,
-            Blocks.SUNFLOWER,
-            Blocks.WHEAT
-    };
-
-    public static final String[] QUARK_MODDED_PLANT_STRINGS = {
-            "blue_blossom_sapling",
-            "glowshroom",
-            "lavender_blossom_sapling",
-            "orange_blossom_sapling",
-            "pink_blossom_sapling",
-            "yellow_blossom_sapling"
-
-    };
-
     public static final DeferredRegister<Block> POTS = DeferredRegister.create(ForgeRegistries.BLOCKS, DyeableFlowerPots.MOD_ID);
 
     public static final RegistryObject<Block> WHITE_FLOWER_POT = POTS.register("white_flower_pot", () -> new DyedFlowerPotBlock(null, () -> Blocks.AIR, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), "white"));
@@ -163,75 +69,42 @@ public class RegistryHandler {
     public static void registerPottedFlowers() {
         for (String color : COLORS) {
             for (Block plant : PLANTS) {
-                String plantString = plant.getRegistryName().toString().replace("minecraft:", "");
+                String plantString = plant.getRegistryName().getPath();
                 POTTED_FLOWERS.register(color + "_potted_" + plantString, () -> new DyedFlowerPotBlock(() -> getPot(color), () -> plant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color));
             }
         }
     }
 
-
     public static void registerModdedPottedFlowers(IForgeRegistry<Block> registry) {
 
-        /*
         if (ModList.get().isLoaded("biomesoplenty")) {
             for (String color : COLORS) {
-                for (String plantString : BOP_PLANT_STRINGS) {
-                    ResourceLocation plantLoc = new ResourceLocation("biomesoplenty", plantString);
-                    if (ForgeRegistries.BLOCKS.containsKey(plantLoc)) {
-                        Block bopPlant = ForgeRegistries.BLOCKS.getValue(plantLoc);
-                        POTTED_FLOWERS.register(color + "_potted_bop_" + plantString, () -> new DyedFlowerPotBlock(() -> getPot(color), () -> bopPlant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color));
+                for (Block plant : BOPCompat.BOP_PLANTS) {
+                    if (plant != Blocks.AIR) {
+                        String plantString = plant.getRegistryName().getPath();
+                        registry.register(new DyedFlowerPotBlock(() -> getPot(color), () -> plant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color).setRegistryName(color + "_potted_bop_" + plantString));
                     }
                 }
             }
         }
-         */
-        if (ModList.get().isLoaded("biomesoplenty")) {
-            DyeableFlowerPots.LOGGER.debug("1111111111111111");
-            for (String color : COLORS) {
-                int i = 0;
-                for (Block plant : BOPCompat.BOP_PLANTS) {
-                    registry.register(new DyedFlowerPotBlock(() -> getPot(color), () -> plant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color).setRegistryName(color + "_potted_bop_" + BOP_PLANT_STRINGS[i]));
-                    ++i;
-                }
-            }
-        }
 
-        /*
         if (ModList.get().isLoaded("quark")) {
             for (String color : COLORS) {
-                for (Block plant : QUARK_VANILLA_PLANTS) {
-                    String plantString = plant.getRegistryName().toString().replace("minecraft:", "");
-                    POTTED_FLOWERS.register(color + "_potted_quark_" + plantString, () -> new DyedFlowerPotBlock(() -> getPot(color), () -> plant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color));
+                for (Block plant : QuarkCompat.QUARK_VANILLA_PLANTS) {
+                    String plantString = plant.getRegistryName().getPath();
+                    registry.register(new DyedFlowerPotBlock(() -> getPot(color), () -> plant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color).setRegistryName(color + "_potted_quark_" + plantString));
                 }
-                for (String plantString : QUARK_MODDED_PLANT_STRINGS) {
-                    ResourceLocation plantLoc = new ResourceLocation("quark", plantString);
-                    if (ForgeRegistries.BLOCKS.containsKey(plantLoc)) {
-                        Block quarkPlant = ForgeRegistries.BLOCKS.getValue(plantLoc);
-                        POTTED_FLOWERS.register(color + "_potted_quark_" + plantString, () -> new DyedFlowerPotBlock(() -> getPot(color), () -> quarkPlant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color));
-                    }
-                }
-            }
-        }
-
-         */
-
-    }
-
-    /*
-    public static void registerModdedPottedFlowersExp() {
-
-        for (String color : COLORS) {
-            for (Block block: ForgeRegistries.BLOCKS.getValues()) {
-                if (block.getRegistryName().getNamespace() != "minecraft" && block.getRegistryName().getNamespace() != "dyeable_flower_pots") {
-                    if (block instanceof FlowerPotBlock) {
-                        Block flower = ((FlowerPotBlock) block).func_220276_d().getBlock();
-
+                QuarkCompat.createRegistryEntries();
+                for (Block plant : QuarkCompat.QUARK_MODDED_PLANTS) {
+                    if (plant != Blocks.AIR) {
+                        String plantString = plant.getRegistryName().getPath();
+                        DyeableFlowerPots.LOGGER.debug(plantString);
+                        registry.register(new DyedFlowerPotBlock(() -> getPot(color), () -> plant, Block.Properties.create(Material.MISCELLANEOUS).hardnessAndResistance(0.0f).notSolid(), color).setRegistryName(color + "_potted_quark_" + plantString));
                     }
                 }
             }
         }
     }
-    */
 
     private static DyedFlowerPotBlock getPot(String color) {
         switch (color) {

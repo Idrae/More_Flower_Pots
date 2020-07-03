@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/pots/brown_flower_pot_cross",
+	"textures": {
+		"plant": "quark:block/potted/sugar_cane"
+	}
+}

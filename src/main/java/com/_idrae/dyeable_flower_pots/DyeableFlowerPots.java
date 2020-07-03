@@ -1,6 +1,8 @@
 package com._idrae.dyeable_flower_pots;
 
 import biomesoplenty.api.block.BOPBlocks;
+import com._idrae.dyeable_flower_pots.client.render.RenderHelper;
+import com._idrae.dyeable_flower_pots.compat.QuarkCompat;
 import com._idrae.dyeable_flower_pots.util.JSONGenerator;
 import com._idrae.dyeable_flower_pots.util.RegistryHandler;
 import net.minecraft.block.Block;
@@ -47,34 +49,17 @@ public class DyeableFlowerPots
 
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         modEventBus.addListener(this::doClientStuff);
-        JSONGenerator.generate();
+        // JSONGenerator.generate();
         RegistryHandler.POTS.register(modEventBus);
         RegistryHandler.POTTED_FLOWERS.register(modEventBus);
         RegistryHandler.registerPottedFlowers();
-        // RegistryHandler.registerModdedPottedFlowers();
         MinecraftForge.EVENT_BUS.register(this);
-    }
-
-    private void setup(final FMLCommonSetupEvent event) {
-
     }
 
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         // do something that can only be done on the client
-        RegistryHandler.POTTED_FLOWERS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-            RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
-            if (block.getRegistryName().toString().contains("fern")) {
-                Minecraft.getInstance().getBlockColors().register((p_228064_0_, p_228064_1_, p_228064_2_, p_228064_3_) -> p_228064_1_ != null && p_228064_2_ != null ? BiomeColors.getGrassColor(p_228064_1_, p_228064_2_) : GrassColors.get(0.5D, 1.0D), block);
-            }
-        });
-        ForgeRegistries.BLOCKS.getValues().forEach(block -> {
-            if (block.getRegistryName().toString().contains("_bop_")) {
-                RenderTypeLookup.setRenderLayer(block, RenderType.getCutout());
-            }
-        });
-        // RenderTypeLookup.setRenderLayer(RegistryHandler.BLACK_FLOWER_POT.get(), RenderType.getCutout());
-
+        RenderHelper.renderPottedFlowers();
     }
 
     @SubscribeEvent
@@ -91,10 +76,11 @@ public class DyeableFlowerPots
     }
 
     @SubscribeEvent
-    public static void onRegisterModdedFlowers(final RegistryEvent.Register<Block> event) {
+    public static void onRegisterModdedFlowers(final RegistryEvent.Register<Block> event) throws IOException {
+
         final IForgeRegistry<Block> registry = event.getRegistry();
         RegistryHandler.registerModdedPottedFlowers(registry);
-
+        JSONGenerator.generate();
 
     }
 

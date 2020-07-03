@@ -38,4 +38,38 @@ public class BOPCompat {
             BOPBlocks.toadstool,
             BOPBlocks.glowshroom
     };
+
+    public static final String[] BOP_PLANT_STRINGS = {
+            "origin_sapling",
+            "flowering_oak_sapling",
+            "rainbow_birch_sapling",
+            "yellow_autumn_sapling",
+            "orange_autumn_sapling",
+            "maple_sapling",
+            "fir_sapling",
+            "redwood_sapling",
+            "white_cherry_sapling",
+            "pink_cherry_sapling",
+            "mahogany_sapling",
+            "jacaranda_sapling",
+            "palm_sapling",
+            "willow_sapling",
+            "dead_sapling",
+            "magic_sapling",
+            "umbran_sapling",
+            "hellbark_sapling",
+            "rose",
+            "violet",
+            "lavender",
+            "wildflower",
+            "orange_cosmos",
+            "pink_daffodil",
+            "pink_hibiscus",
+            "glowflower",
+            "wilted_lily",
+            "burning_blossom",
+            "sprout",
+            "toadstool",
+            "glowshroom"
+    };
 }

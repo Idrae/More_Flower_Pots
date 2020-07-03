@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/pots/cyan_flower_pot_cross",
+	"textures": {
+		"plant": "quark:block/glowshroom"
+	}
+}

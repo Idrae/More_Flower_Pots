@@ -1,0 +1,6 @@
+{
+	"parent": "dyeable_flower_pots:block/pots/black_flower_pot_cross",
+	"textures": {
+		"plant": "quark:block/lavender_blossom_sapling"
+	}
+}

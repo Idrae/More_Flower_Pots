@@ -1,6 +1,0 @@
-{
-	"parent": "dyeable_flower_pots:block/purple_flower_pot_cross",
-	"textures": {
-		"plant": "biomesoplenty:block/maple_sapling"
-	}
-}

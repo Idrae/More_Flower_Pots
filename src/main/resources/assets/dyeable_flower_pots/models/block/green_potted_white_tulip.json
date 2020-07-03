@@ -1,6 +1,0 @@
-{
-	"parent": "dyeable_flower_pots:block/green_flower_pot_cross",
-	"textures": {
-		"plant": "block/white_tulip"
-	}
-}
